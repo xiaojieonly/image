@@ -39,6 +39,8 @@
 
 #define IMAGE_FORMAT_GIF com_hippo_image_Image_FORMAT_GIF
 
+#define IMAGE_FORMAT_WEBP com_hippo_image_Image_FORMAT_WEBP
+
 #define IMAGE_FORMAT_MAX_COUNT 5
 
 void init_image_libraries();
