@@ -19,7 +19,9 @@ package com.hippo.image;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
+
 import com.getkeepsafe.relinker.ReLinker;
+
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -53,6 +55,11 @@ public final class Image {
      * GIF image format
      */
     public static final int FORMAT_GIF = 3;
+
+    /**
+     * WEBP image format
+     */
+    public static final int FORMAT_WEBP = 3;
 
     private static final AtomicInteger sImageCount = new AtomicInteger();
 
@@ -131,7 +138,7 @@ public final class Image {
      * Render the image to {@code Bitmap}
      */
     public void render(int srcX, int srcY, Bitmap dst, int dstX, int dstY,
-            int width, int height, boolean fillBlank, int defaultColor) {
+                       int width, int height, boolean fillBlank, int defaultColor) {
         checkRecycled();
         nativeRender(mNativePtr, mFormat, srcX, srcY, dst, dstX, dstY,
                 width, height, fillBlank, defaultColor);
@@ -276,11 +283,11 @@ public final class Image {
     private static native boolean nativeIsCompleted(long nativePtr, int format);
 
     private static native void nativeRender(long nativePtr, int format,
-            int srcX, int srcY, Bitmap dst, int dstX, int dstY,
-            int width, int height, boolean fillBlank, int defaultColor);
+                                            int srcX, int srcY, Bitmap dst, int dstX, int dstY,
+                                            int width, int height, boolean fillBlank, int defaultColor);
 
     private static native void nativeTexImage(long nativePtr, int format,
-            boolean init, int offsetX, int offsetY, int width, int height);
+                                              boolean init, int offsetX, int offsetY, int width, int height);
 
     private static native void nativeAdvance(long nativePtr, int format);
 
